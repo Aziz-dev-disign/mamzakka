@@ -12,65 +12,61 @@
     <div class="item form-group row">
         <label class="control-label col-md-3" for="categorie">Catégorie<span class="required">*</span></label>
         <div class="col-md-7">
-            <select name="categorie_id" id="categorie" required="required" class="form-control col-md-7 @error('categorie_id') is-invalid @enderror" required  autofocus>
+            <select name="categorie" id="categorie" required="required" class="form-control col-md-7 @error('categorie') is-invalid @enderror" required  autofocus>
                 <option value="">choisir...</option>
-                @foreach ($categories as $categorie)                    
-                    <option value=" {{$categorie->id}} ">{{$categorie->categorie}}</option> 
-                @endforeach               
+                <option value="marie">Marié</option>
+                <option value="celibataire">Célibataire</option>
             </select>            
-            @error('categorie_id')
+            @error('categorie')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-            @enderror
+        @enderror
         </div>
     </div>
     <div class="item form-group row">
         <label class="control-label col-md-3" for="type">Type d'article<span class="required">*</span></label>
         <div class="col-md-7">
-            <select name="type_id" id="type" required="required" class="form-control col-md-7 @error('type_id') is-invalid @enderror" required  autofocus>
+            <select name="type" id="type" required="required" class="form-control col-md-7 @error('type') is-invalid @enderror" required  autofocus>
                 <option value="">choisir...</option>
-                @foreach ($types as $type)                    
-                    <option value=" {{$type->id}} ">{{$type->nom}}</option> 
-                @endforeach               
+                <option value="marie">Marié</option>
+                <option value="celibataire">Célibataire</option>
             </select>            
-            @error('type_id')
+            @error('type')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-            @enderror
+        @enderror
         </div>
     </div>
     <div class="item form-group row">
         <label class="control-label col-md-3" for="statu">Statu<span class="required">*</span></label>
         <div class="col-md-7">
-            <select name="statu_id" id="statu" required="required" class="form-control col-md-7 @error('statu_id') is-invalid @enderror" required  autofocus>
+            <select name="statu" id="statu" required="required" class="form-control col-md-7 @error('statu') is-invalid @enderror" required  autofocus>
                 <option value="">choisir...</option>
-                @foreach ($status as $statu)                    
-                    <option value=" {{$statu->id}} ">{{$statu->statu}}</option> 
-                @endforeach               
+                <option value="marie">Marié</option>
+                <option value="celibataire">Célibataire</option>
             </select>            
-            @error('statu_id')
+            @error('statu')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-            @enderror
+        @enderror
         </div>
     </div>
     <div class="item form-group row">
         <label class="control-label col-md-3" for="partetnaire">Partenaire<span class="required">*</span></label>
         <div class="col-md-7">
-            <select name="partenaire_id" id="partenaire" required="required" class="form-control col-md-7 @error('partenaire_id') is-invalid @enderror" required  autofocus>
+            <select name="partenaire" id="partenaire" required="required" class="form-control col-md-7 @error('partenaire') is-invalid @enderror" required  autofocus>
                 <option value="">choisir...</option>
-                @foreach ($partenaires as $partenaire)                    
-                    <option value=" {{$partenaire->id}} ">{{$partenaire->nom}} {{$partenaire->prenom}}</option> 
-                @endforeach               
+                <option value="marie">Marié</option>
+                <option value="celibataire">Célibataire</option>
             </select>            
-            @error('partenaire_id')
+            @error('partenaire')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-            @enderror
+        @enderror
         </div>
     </div>
     <div class="item form-group row">

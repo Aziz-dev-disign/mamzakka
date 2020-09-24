@@ -8,8 +8,8 @@ class Client extends Model
 {
     protected $guarded = [];
 
-    public function produit()
+    public function client_produit()
     {
-        return $this->hasMany(Achat::class);
+        return $this->hasMany(Produit::class);
     }
 }

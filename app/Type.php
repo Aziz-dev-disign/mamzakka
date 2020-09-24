@@ -13,7 +13,7 @@ class Type extends Model
         return $this->hasMany(Article::class);
     }
 
-    public function produit()
+    public function type_produit()
     {
         return $this->hasMany(Type::class);
     }

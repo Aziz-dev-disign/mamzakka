@@ -1,18 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Article;
-use App\Categorie;
-use App\Statu;
-use App\Partenaire;
-use App\Type;
+use App\Produit;
+use Illuminate\Http\Request;
 
-
-class ArticleController extends Controller
+class ProduitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,11 +25,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories      = Categorie::all();
-        $status          = Statu::all();
-        $types           = Type::all();
-        $partenaires     = Partenaire::all();   
-        return view('dashboard.article.create', compact('categories','status','types','partenaires'));
+        $clients = Client::all();
+        $Types    = Type::all();
+        return view('dashboard.article.create', compact('clients','types'));
     }
 
     /**
@@ -52,10 +44,10 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Produit $produit)
     {
         //
     }
@@ -63,10 +55,10 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produit $produit)
     {
         //
     }
@@ -75,10 +67,10 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produit $produit)
     {
         //
     }
@@ -86,10 +78,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Produit $produit)
     {
         //
     }

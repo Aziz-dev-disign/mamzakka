@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\Categorie;
+
 class CategorieTableSeeder extends Seeder
 {
     /**
@@ -11,6 +13,19 @@ class CategorieTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $categorie = [
+
+            [
+                'id'        =>1,
+                'categorie' =>'Maison',
+            ],
+            [
+                'id'        =>2,
+                'categorie' =>'Terrain',
+            ]
+
+        ];
+
+        Categorie::insert($categorie);
     }
 }

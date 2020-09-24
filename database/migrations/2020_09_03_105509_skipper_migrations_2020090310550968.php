@@ -59,7 +59,7 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->string('email')->nullable(true);
             $table->date('date')->nullable(true);
             $table->string('genre')->nullable(true);
-            $table->integer('contact')->nullable(true);
+            $table->string('contact')->nullable(true);
             $table->string('situation_m', 255)->nullable(true);
             $table->string('adresse', 255)->nullable(true);
             $table->string('fichier', 255)->nullable(true);
@@ -92,6 +92,7 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->string('slug')->nullable(true);
             $table->string('description')->nullable(true);
             $table->string('localisation')->nullable(true);
+            $table->string('superficie')->nullable(true);
             $table->string('image')->nullable(true);
             $table->date('date')->nullable(true);
             $table->timestamp('created_at')->nullable(true);
@@ -135,7 +136,7 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->string('nom')->nullable(true);
             $table->string('prenom')->nullable(true);
             $table->date('date_naissance')->nullable(true);
-            $table->date('telephone')->nullable(true);
+            $table->string('telephone')->nullable(true);
             $table->string('numero_cnib')->nullable(true)->unique();
             $table->date('delivre_le')->nullable(true);
             $table->timestamp('created_at')->nullable(true);
@@ -145,7 +146,7 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->bigInteger('id')->autoIncrement()->unsigned();
             $table->bigInteger('client_id')->nullable(true)->unsigned();
             $table->bigInteger('type_id')->nullable(true)->unsigned();
-            $table->integer('prix')->nullable(true);
+            $table->string('prix')->nullable(true);
             $table->integer('numero_article')->nullable(true);
             $table->string('superficie')->nullable(true);
             $table->string('date')->nullable(true);

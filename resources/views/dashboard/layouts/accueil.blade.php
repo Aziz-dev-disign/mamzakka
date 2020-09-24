@@ -81,14 +81,13 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i>Posts<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ route('admin.article.index') }}"><i class="fa fa-gift"></i> Produits</a></a></li>
+                      <li><a href="{{ route('admin.article.create') }}"><i class="fa fa-gift"></i> Article</a></a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-shopping-cart"></i> Ventes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{route('admin.client.index')}}"><i class="fa fa-user"></i> Clients</a></a></li>
-                      <li><a href="form.html"><i class="fa fa-home"></i> Maisons</a></a></li>
-                      <li><a href="form_advanced.html"><i class="fa fa-road"></i> Terrains</a></a></li>
+                      <li><a href="{{ route('admin.article.create') }}"><i class="fa fa-gift"></i> Produits</a></a></li>
                     </ul>
                   </li>
                   <li><a href=" "><i class="fa fa-suitcase"></i> Parténariats <span class="fa fa-chevron-down"></span></a>

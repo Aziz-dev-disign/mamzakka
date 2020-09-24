@@ -65,7 +65,7 @@
     <div class="item form-group row">
         <label class="control-label col-md-3" for="numero_cnib">Numéro CNIB<span class="required">*</span></label>
         <div class="col-md-7">
-            <input type="text" id="numero_cnib" name="numero_cnib"  required="required" class="form-control col-md-7 @error('numero_cnib') is-invalid @enderror" placeholder="Hamdallaye, Rue 10.74"  value="{{ old('numero_cnib') }}" required autocomplete="matricule" autofocus>            
+            <input type="text" id="numero_cnib" name="numero_cnib"  required="required" class="form-control col-md-7 @error('numero_cnib') is-invalid @enderror" placeholder="B5054378"  value="{{ old('numero_cnib') }}" required autocomplete="matricule" autofocus>            
             @error('numero_cnib')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
