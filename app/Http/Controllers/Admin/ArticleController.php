@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -11,7 +12,6 @@ use App\Statu;
 use App\Partenaire;
 use App\Type;
 
-
 class ArticleController extends Controller
 {
     /**
@@ -21,7 +21,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        $titre = 'La liste des article'; 
+        return view('dashboard.article.index',['titre'=>$titre]);
     }
 
     /**
@@ -31,11 +32,12 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $titre = 'Ajouter un article'; 
         $categories      = Categorie::all();
         $status          = Statu::all();
         $types           = Type::all();
         $partenaires     = Partenaire::all();   
-        return view('dashboard.article.create', compact('categories','status','types','partenaires'));
+        return view('dashboard.article.create', compact('categories','status','types','partenaires','titre'));
     }
 
     /**
@@ -46,16 +48,36 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categories      = Categorie::all();
+        $status          = Statu::all();
+        $types           = Type::all();
+        $partenaires     = Partenaire::all();   
+        $imagePath = request('photo')->store('article','public');
+
+        Article::create([
+                'categorie_id'   =>$request->categorie_id,
+                'type_id'        =>$request->type_id,
+                'statu_id'       =>$request->statu_id,
+                'partenaire_id'  =>$request->partenaire_id,
+                'numero_article' =>$request->numero_article,
+                'nom'            =>$request->nom,
+                'slug'           =>$request->slug,
+                'description'    =>$request->description,
+                'localisation'   =>$request->localisation,
+                'superficie'     =>$request->superficie,
+                'image'          =>$imagePath,
+                'date'           =>$request->date,
+        ]);
+        return view('dashboard.article.create', compact('categories','status','types','partenaires'))->with('message','L\'article a éré enregistrer avec succès');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
         //
     }
@@ -63,10 +85,10 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
         //
     }
@@ -75,10 +97,10 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -86,10 +108,10 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
         //
     }

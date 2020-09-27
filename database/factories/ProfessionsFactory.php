@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Profession::class, function (Faker $faker) {
     return [
-        'profession'  => $faker->company,
+        'profession'  => $faker->jobTitle,
     ];
 });

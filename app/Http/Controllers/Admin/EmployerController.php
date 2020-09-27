@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmployerFormeRequest;
+
+use App\Employer;
 use App\Profession;
 use App\Domaine;
+use Illuminate\Http\Request;
 
 class EmployerController extends Controller
 {
@@ -16,7 +19,8 @@ class EmployerController extends Controller
      */
     public function index()
     {
-        //$titre = 'Ajouter un employer';
+        $titre = 'La liste des employers'; 
+        return view('dashboard.employer.index',['titre'=>$titre]);
     }
 
     /**
@@ -26,9 +30,10 @@ class EmployerController extends Controller
      */
     public function create()
     {
+        $titre = 'Ajouter un employer'; 
         $professions = Profession::all();
         $domaines = Domaine::all();
-        return view('dashboard.employer.create', compact('professions','domaines'));
+        return view('dashboard.employer.create', compact('professions','domaines','titre'));
     }
 
     /**
@@ -37,18 +42,40 @@ class EmployerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployerFormeRequest $request)
     {
-        //
+        $professions = Profession::all();
+        $domaines = Domaine::all();
+        $imagePath = request('photo')->store('employers','public');
+        $fichier = request('fichier')->store('fichier_employer','public');
+        
+        Employer::create([
+            'domaine_id'=>$request->domaine_id,
+            'profession_id'=>$request->profession_id,
+            'matricule'=>$request->matricule,
+            'nom'=>$request->nom,
+            'prenom'=>$request->prenom,
+            'email'=>$request->email,
+            'date'=>$request->date,
+            'genre'=>$request->genre,
+            'contact'=>$request->contact,
+            'situation_m'=>$request->situation_m,
+            'adresse'=>$request->adresse,
+            'fichier'=>$fichier,
+            'photo'=>$imagePath,
+        ]);
+                
+        return view('dashboard.employer.create',compact('professions','domaines'))->with('message','employer enregistrer avec succés');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Employer  $employer
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employer $employer)
     {
         //
     }
@@ -56,10 +83,10 @@ class EmployerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Employer  $employer
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employer $employer)
     {
         //
     }
@@ -68,10 +95,10 @@ class EmployerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Employer  $employer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employer $employer)
     {
         //
     }
@@ -79,10 +106,10 @@ class EmployerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Employer  $employer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employer $employer)
     {
         //
     }

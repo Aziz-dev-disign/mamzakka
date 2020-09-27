@@ -13,7 +13,7 @@ class Produit extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function type()
+    public function produit_type()
     {
         return $this->belongsTo(Type::class);
     }

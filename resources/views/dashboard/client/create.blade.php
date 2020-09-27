@@ -1,10 +1,12 @@
 @extends('dashboard.layouts.accueil')
 
-{{-- @section('title', $titre)
-    <h1>{{$titre}}</h1> --}}
 
 @section('content')
 
+@section('title', $titre)
+<h3 style="margin-bottom: 10px;">{{$titre}}</h3>
+
+<div class="ln_solid"></div>
 
 @if (\Session::has('success'))
 <div class="alert alert-success">

@@ -16,8 +16,9 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('dashboard.client.create');
+    {       
+        $titre = 'Liste des clients';
+        return view('dashboard.client.index',['titre'=>$titre]);
     }
 
     /**
@@ -27,7 +28,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $titre = 'Ajouter un client'; 
+        return view('dashboard.client.create',['titre'=>$titre]);
     }
 
     /**
@@ -37,7 +39,7 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ClientFormRequest $request)
-    {        
+    {   
         Client::create($request->all());
 
         return view('dashboard.client.create')->with('message','Les données du client ont été inserrer avec success');
@@ -46,10 +48,10 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Client $client)
     {
         //
     }
@@ -57,10 +59,10 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
         //
     }
@@ -69,10 +71,10 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientFormRequest $request, $id)
+    public function update(Request $request, Client $client)
     {
         //
     }
@@ -80,10 +82,10 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
         //
     }

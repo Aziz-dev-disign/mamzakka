@@ -1,11 +1,15 @@
 @extends('dashboard.layouts.accueil')
 
-{{-- @section('title', $titre)
-    <h1>{{$titre}}</h1> --}}
+
 
 @section('content')
 
-<form class="form-horizontal form-label-left"  method="POST" action="" enctype="multipart/form-data">
+@section('title', $titre)
+<h3 style="margin-bottom: 10px;">{{$titre}}</h3>
+
+<div class="ln_solid"></div>
+
+<form class="form-horizontal form-label-left"  method="POST" action="{{route('admin.article.store')}}" enctype="multipart/form-data">
     @csrf
 
     
@@ -74,10 +78,21 @@
         </div>
     </div>
     <div class="item form-group row">
-        <label class="control-label col-md-3" for="numero">Numéro d'article <span class="required">*</span></label>
+        <label class="control-label col-md-3" for="numero_article">Numéro d'article <span class="required">*</span></label>
         <div class="col-md-7">
-            <input type="text" id="numero" class="form-control col-md-7  @error('numero') is-invalid @enderror" name="numero" placeholder="Exemple : 2020/001A" value="{{ old('numero') }}" required autocomplete="numero" autofocus>
-            @error('numero')
+            <input type="text" id="numero_article" class="form-control col-md-7  @error('numero_article') is-invalid @enderror" name="numero_article" placeholder="Exemple : 001" value="{{ old('numero_article') }}" required autocomplete="numero_article" autofocus>
+            @error('numero_article')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+    <div class="item form-group row">
+        <label class="control-label col-md-3" for="nom">Nom <span class="required">*</span></label>
+        <div class="col-md-7">
+            <input type="text" id="nom" class="form-control col-md-7  @error('nom') is-invalid @enderror" name="nom" placeholder="Entrez le nom d'article" value="{{ old('nom') }}" required autocomplete="nom" autofocus>
+            @error('nom')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -107,6 +122,17 @@
         </div>
     </div>
     <div class="item form-group row">
+        <label class="control-label col-md-3" for="superficie">Superficie<span class="required">*</span></label>
+        <div class="col-md-7">
+            <input type="text" id="superficie"  required="required" class="form-control col-md-7 @error('superficie') is-invalid @enderror" name="superficie" placeholder="Exemple: 280m2"  value="{{ old('superficie') }}" required autofocus>            
+            @error('superficie')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        </div>
+    </div>
+    <div class="item form-group row">
         <label class="control-label col-md-3" for="prix">Prix<span class="required">*</span></label>
         <div class="col-md-7">
             <input type="text" id="prix"  required="required" class="form-control col-md-7 @error('prix') is-invalid @enderror" name="prix" placeholder="FCFA"  value="{{ old('prix') }}" required autofocus>            
@@ -120,8 +146,19 @@
     <div class="item form-group row">
         <label class="control-label col-md-3" for="photo">Photo<span class="required">*</span></label>
         <div class="col-md-7">
-            <input type="file" id="photo" name="photo"  required="required" class="form-control col-md-7 @error('photo') is-invalid @enderror" placeholder="" required autofocus>            
+            <input type="file" id="photo" name="photo"  required="required" class="form-control col-md-7 @error('photo') is-invalid @enderror" required autofocus>            
             @error('photo')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>
+    <div class="item form-group row">
+        <label class="control-label col-md-3" for="date">Date<span class="required">*</span></label>
+        <div class="col-md-7">
+            <input type="date" id="date" name="date"  required="required" class="form-control col-md-7 @error('date') is-invalid @enderror" required autofocus>            
+            @error('date')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -190,12 +227,7 @@
                 </div>
             </div>
             <div id="editor-one" class="editor-wrapper"></div>
-            <textarea name="description" id="description" style="display:none;" class="form-control @error('description') is-invalid @enderror" required autofocus></textarea>
-            @error('photo')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+            <textarea name="description" id="description" style="display:none;" ></textarea>
         </div>
     </div>
     <div class="ln_solid"></div>

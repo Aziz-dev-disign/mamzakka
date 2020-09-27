@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /**
- * Route for single pages
+ * Routes for single pages
  */
 
 Route::get('a-propos', function(){
@@ -25,21 +25,28 @@ Route::get('contact', function(){
     return view('vitrine.pages.contact');
 });
 
-Route::get('layouts', function(){
-    return view('dashboard.layouts.accueil');
-});
 
-Route::get('accueil', 'virineController@index');
+/**
+ * Routes for web site 
+ */
+
+Route::resource('/', 'vitrineController');
 
 
-Route::get('/', 'virineController@index');
+/**
+ * Routes for web application
+ */
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function () {
 
+    Route::resource('index', 'CalendrierController');
     Route::resource('employer', 'EmployerController');
     Route::resource('article', 'ArticleController');
     Route::resource('client', 'ClientController');
     Route::resource('temoignage', 'TemoignageController');
+    Route::resource('partenaire', 'PartenaireController');
+    Route::resource('produit', 'ProduitController');
+    Route::resource('profil', 'ProfilController');
 
 });
 
@@ -47,6 +54,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

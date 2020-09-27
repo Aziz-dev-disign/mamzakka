@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProduitFormRequest;
 
 use App\Produit;
+use App\Client;
+use App\Type;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -15,7 +19,7 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.produit.index');
     }
 
     /**
@@ -26,8 +30,8 @@ class ProduitController extends Controller
     public function create()
     {
         $clients = Client::all();
-        $Types    = Type::all();
-        return view('dashboard.article.create', compact('clients','types'));
+        $types = Type::all();
+        return view('dashboard.produit.create', compact('clients','types'));
     }
 
     /**
@@ -36,9 +40,13 @@ class ProduitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProduitFormRequest $request)
     {
-        //
+        $clients = Client::all();
+        $types = Type::all();
+        Produit::create($request->all());
+
+        return view('dashboard.produit.create',compact('clients','types'))->with('message','Les données du produit ont été inserrer avec success');
     }
 
     /**

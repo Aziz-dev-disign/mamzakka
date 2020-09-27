@@ -13,7 +13,7 @@ class EmployerFormeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,20 @@ class EmployerFormeRequest extends FormRequest
      */
     public function rules()
     {
-        //
+        return [
+            'domaine_id'        =>['required','integer'],
+            'profession_id'     =>['required','integer'],
+            'matricule'         =>['required','string','min:3'],
+            'nom'               =>['required','string','min:3'],
+            'prenom'            =>['required','string','min:3'],
+            'email'             =>['required','email'],
+            'date'              =>['required','date'],
+            'genre'             =>['required','string'],
+            'contact'           =>['required','string','min:8','max:15'],
+            'situation_M'       =>['required','string','min:3'],
+            'adresse'           =>['required','string'],
+            'fichier'           =>['required','string'],
+            'photo'             =>['required','string'],
+        ];
     }
 }

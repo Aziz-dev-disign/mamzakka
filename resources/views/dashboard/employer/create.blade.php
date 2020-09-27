@@ -5,7 +5,47 @@
 
 @section('content')
 
-<form class="form-horizontal form-label-left"  method="POST" action="" enctype="multipart/form-data">
+@section('title', $titre)
+<h3 style="margin-bottom: 10px;">{{$titre}}</h3>
+
+<div class="ln_solid"></div>
+
+<form class="form-horizontal form-label-left"  method="POST" action="{{route('admin.employer.store')}}" enctype="multipart/form-data">
+    @csrf
+
+    
+    <div class="item form-group row">
+        <label class="control-label col-md-3" for="domaine">Domaine d'activité<span class="required">*</span></label>
+        <div class="col-md-7">
+            <select name="domaine_id" id="domaine" required="required" class="form-control col-md-7 @error('domaine_id') is-invalid @enderror" required  autofocus>
+                <option value="">choisir...</option>
+                @foreach ($domaines as $domaine)                    
+                    <option value=" {{$domaine->id}} ">{{$domaine->nom}}</option>
+                @endforeach
+            </select>            
+            @error('domaine_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        </div>
+    </div>
+    <div class="item form-group row">
+        <label class="control-label col-md-3" for="profession">Profession<span class="required">*</span></label>
+        <div class="col-md-7">
+            <select name="profession_id" id="profession" required="required" class="form-control col-md-7 @error('profession_id') is-invalid @enderror" required  autofocus>
+                <option value="">choisir...</option>
+                @foreach ($professions as $profession)                    
+                    <option value=" {{$profession->id}} ">{{$profession->profession}}</option> 
+                @endforeach               
+            </select>            
+            @error('profession_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+    </div>  
     <div class="item form-group row">
         <label class="control-label col-md-3" for="matricule">Matricule <span class="required">*</span></label>
         <div class="col-md-7">
@@ -33,6 +73,17 @@
         <div class="col-md-7">
             <input type="text" id="prenom"  required="required" class="form-control col-md-7 @error('prenom') is-invalid @enderror " name="prenom" placeholder="veillez entrer un prénom"  value="{{ old('prenom') }}" required autocomplete="prenom" autofocus>            
             @error('prenom')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+        </div>
+    </div>
+    <div class="item form-group row">
+        <label class="control-label col-md-3" for="email">Email<span class="required">*</span></label>
+        <div class="col-md-7">
+            <input type="text" id="email"  required="required" class="form-control col-md-7 @error('email') is-invalid @enderror " name="email" placeholder="veillez entrer un prénom"  value="{{ old('email') }}" required autocomplete="email" autofocus>            
+            @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -126,39 +177,7 @@
             </span>
             @enderror
         </div>
-    </div>
-    <div class="item form-group row">
-        <label class="control-label col-md-3" for="domaine">Domaine d'activité<span class="required">*</span></label>
-        <div class="col-md-7">
-            <select name="domaine_id" id="domaine" required="required" class="form-control col-md-7 @error('domaine_id') is-invalid @enderror" required  autofocus>
-                <option value="">choisir...</option>
-                @foreach ($domaines as $domaine)                    
-                    <option value=" {{$domaine->id}} ">{{$domaine->nom}}</option>
-                @endforeach
-            </select>            
-            @error('domaine_id')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-        </div>
-    </div>
-    <div class="item form-group row">
-        <label class="control-label col-md-3" for="profession">Profession<span class="required">*</span></label>
-        <div class="col-md-7">
-            <select name="profession_id" id="profession" required="required" class="form-control col-md-7 @error('profession_id') is-invalid @enderror" required  autofocus>
-                <option value="">choisir...</option>
-                @foreach ($professions as $profession)                    
-                    <option value=" {{$profession->id}} ">{{$profession->profession}}</option> 
-                @endforeach               
-            </select>            
-            @error('profession_id')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-    </div>    
+    </div>  
     <div class="ln_solid"></div>
     <div class="form-group row">
         <div class="col-md-9 col-sm-9  offset-md-3">

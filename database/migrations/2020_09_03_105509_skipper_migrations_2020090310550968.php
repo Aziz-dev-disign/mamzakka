@@ -87,7 +87,7 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->bigInteger('type_id')->nullable(true)->unsigned();
             $table->bigInteger('statu_id')->nullable(true)->unsigned();
             $table->bigInteger('partenaire_id')->nullable(true)->unsigned();
-            $table->integer('numero_article')->nullable(true)->unique();
+            $table->string('numero_article')->nullable(true)->unique();
             $table->string('nom')->nullable(true);
             $table->string('slug')->nullable(true);
             $table->string('description')->nullable(true);
@@ -120,12 +120,12 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->bigInteger('id')->autoIncrement()->unsigned();
             $table->string('nom')->nullable(true);
             $table->string('prenom')->nullable(true);
-            $table->integer('contact')->nullable(true);
+            $table->string('contact')->nullable(true);
             $table->string('numero_cnib')->nullable(true)->unique();
             $table->date('delivre_le')->nullable(true);
-            $table->integer('numero_compte')->nullable(true);
-            $table->string('adress_physique')->nullable(true);
-            $table->string('type_prestation')->nullable(true);
+            $table->string('numero')->nullable(true);
+            $table->string('adresse')->nullable(true);
+            $table->string('prestation')->nullable(true);
             $table->string('fichier_cnib')->nullable(true);
             $table->string('fichier_article')->nullable(true);
             $table->timestamp('created_at')->nullable(true);
@@ -175,7 +175,7 @@ class SkipperMigrations2020090310550968 extends Migration
             $table->bigInteger('user_id')->nullable(true)->unsigned();
             $table->string('prenom')->nullable(true);
             $table->string('function')->nullable(true);
-            $table->string('numero')->nullable(true);
+            $table->string('telephone')->nullable(true);
             $table->string('photo')->nullable(true);
             $table->timestamp('created_at')->nullable(true);
             $table->timestamp('updated_at')->nullable(true);
