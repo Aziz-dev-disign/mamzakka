@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\ArticleFormRequest;
 use App\Article;
 use App\Categorie;
 use App\Statu;
@@ -46,7 +47,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleFormRequest $request)
     {
         $categories      = Categorie::all();
         $status          = Statu::all();
